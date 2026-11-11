@@ -44,8 +44,9 @@ nav a.pill:hover{background:var(--m-d);color:#fff}
 .hero .arcs{position:absolute;right:-140px;top:-170px;width:680px;height:680px;opacity:.13;pointer-events:none}
 .hero .in{position:relative;padding-top:76px;padding-bottom:26px}
 .hero .kick{font:600 14px/1.3 var(--disp);letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-bottom:20px}
-.hero h1{font-size:clamp(38px,7.2vw,84px);font-weight:800;letter-spacing:-.01em;max-width:13ch}
-.hero h1 em{font-style:normal;display:inline-block;border-bottom:.09em solid #fff;line-height:1}
+.hero h1{font-size:clamp(36px,7.2vw,84px);font-weight:800;letter-spacing:-.01em;text-wrap:normal}
+.hero h1 span{display:block;white-space:nowrap}
+.hero h1 em{font-style:normal;display:inline-block;white-space:nowrap;border-bottom:.09em solid #fff;line-height:1}
 .hero .sub{font-size:clamp(18px,2.1vw,22px);max-width:54ch;margin-top:26px;line-height:1.45}
 .hero .sub b{font-family:var(--disp);font-weight:700}
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
@@ -255,7 +256,7 @@ footer a{color:#fff}
   <svg class="arcs" viewBox="0 0 680 680" aria-hidden="true" fill="none" stroke="#fff" stroke-linecap="round"><path d="M560 150A280 280 0 1 0 560 530" stroke-width="56"/><path d="M470 220A170 170 0 1 0 470 460" stroke-width="34"/><circle cx="340" cy="340" r="34" fill="#fff" stroke="none"/></svg>
   <div class="wrap in">
     <p class="kick">Mention de 3<sup>e</sup> année · CentraleSupélec</p>
-    <h1>Information &amp; Communication <em>Engineering</em></h1>
+    <h1><span>Information &amp;</span> <span>Communication</span> <em>Engineering</em></h1>
     <p class="sub">La mention où l’on comprend ce qui fait tourner la 5G, le streaming, l’IA et les réseaux. Notre fil rouge : <b>les mathématiques pour l’information</b>.</p>
     <div class="cta">
       <a class="btn w" href="#applications">Voir ce qu’on y fait <span aria-hidden="true">↓</span></a>
