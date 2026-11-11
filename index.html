@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mention ICE — Information &amp; Communication Engineering</title>
+<meta name="description" content="Mention Information & Communication Engineering (ICE), 3e année CentraleSupélec : les mathématiques pour l'information. 5G, IA, réseaux, compression, finance.">
+<meta name="color-scheme" content="light">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='226 116 444 230'%3E%3Ccircle cx='253.5' cy='142.5' r='22.5' fill='%2386144F'/%3E%3Cpath d='M253.5 207V315' stroke='%231C1722' stroke-width='42' stroke-linecap='round'/%3E%3Cpath d='M487.1 161.2A92 92 0 1 0 487.1 302.2' fill='none' stroke='%2386144F' stroke-width='36' stroke-linecap='round'/%3E%3Cpath d='M454.2 198.2A42.5 42.5 0 1 0 454.2 265.2' fill='none' stroke='%23706A7F' stroke-width='19' stroke-linecap='round'/%3E%3Ccircle cx='428' cy='231.7' r='11' fill='%231C1722'/%3E%3Cpath d='M573.3 146H645.7M573.3 317.5H645.7' stroke='%231C1722' stroke-width='38.5' stroke-linecap='round'/%3E%3Cpath d='M573.3 232H608.7' stroke='%23706A7F' stroke-width='38.5' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--m:#86144F;--m-d:#6B0F3F;--k:#1C1722;--g:#706A7F;--bg:#F5F3F6;--mu:#5F5A6B;--line:#E2DDE7;--tint:#EFE3EA;--card:#fff;
+  --disp:"Bricolage Grotesque",system-ui,sans-serif;--txt:"Source Sans 3",system-ui,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font:17px/1.55 var(--txt);color:var(--k);background:var(--bg);overflow-x:hidden}
+h1,h2,h3{font-family:var(--disp);line-height:1.1;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--m)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:72px 0;scroll-margin-top:64px}
+.eyebrow{font:700 13px/1 var(--disp);letter-spacing:.14em;text-transform:uppercase;color:var(--m);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:22px;height:8px;border-radius:4px;background:var(--m)}
+h2{font-size:clamp(28px,4.2vw,42px);font-weight:800;letter-spacing:-.01em;max-width:22ch}
+.lead{color:var(--mu);font-size:19px;max-width:62ch;margin-top:14px}
+.head{margin-bottom:36px}
+
+/* barre logo */
+.top{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:68px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--k)}
+.logo .mark{height:44px;width:auto;display:block;flex:none}
+.logo span{font:700 15px/1.2 var(--disp)}
+nav{margin-left:auto;display:flex;align-items:center;gap:22px}
+nav a{text-decoration:none;color:var(--mu);font-weight:600;font-size:15.5px}
+nav a:hover{color:var(--m)}
+nav a.pill{background:var(--m);color:#fff;padding:8px 16px;border-radius:999px}
+nav a.pill:hover{background:var(--m-d);color:#fff}
+
+/* hero */
+.hero{background:var(--m);color:#fff;position:relative;overflow:hidden}
+.hero .arcs{position:absolute;right:-140px;top:-170px;width:680px;height:680px;opacity:.13;pointer-events:none}
+.hero .in{position:relative;padding-top:76px;padding-bottom:26px}
+.hero .kick{font:600 14px/1.3 var(--disp);letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-bottom:20px}
+.hero h1{font-size:clamp(38px,7.2vw,84px);font-weight:800;letter-spacing:-.01em;max-width:13ch}
+.hero h1 em{font-style:normal;display:inline-block;border-bottom:.09em solid #fff;line-height:1}
+.hero .sub{font-size:clamp(18px,2.1vw,22px);max-width:54ch;margin-top:26px;line-height:1.45}
+.hero .sub b{font-family:var(--disp);font-weight:700}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font:700 16px var(--txt);text-decoration:none;border:2px solid #fff}
+.btn.w{background:#fff;color:var(--m)}
+.btn.o{color:#fff}
+.btn.w:hover{background:var(--tint)}
+.btn.o:hover{background:rgba(255,255,255,.12)}
+.btn.mg{background:var(--m);border-color:var(--m);color:#fff}
+.btn.mg:hover{background:var(--m-d);border-color:var(--m-d)}
+.wavebox{position:relative;margin-top:44px}
+#wave{display:block;width:100%;height:150px}
+.wl{display:grid;grid-template-columns:1fr 1fr 1fr;font:600 12.5px/1.2 var(--disp);letter-spacing:.12em;text-transform:uppercase;padding:6px 0 26px;opacity:.9}
+.wl span:nth-child(2){text-align:center}.wl span:nth-child(3){text-align:right}
+
+/* chiffres */
+.stats{background:var(--k);color:#fff;padding:0}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.st{padding:30px 22px 30px 0;border-left:1px solid rgba(255,255,255,.16);padding-left:22px}
+.st:first-child{border-left:0;padding-left:0}
+.st b{display:block;font:800 clamp(34px,4.4vw,50px)/1 var(--disp);letter-spacing:-.02em}
+.st b i{font-style:normal;font-size:.5em;margin-left:4px;font-weight:700}
+.st span{display:block;margin-top:8px;color:#CFCAD8;font-size:15.5px;line-height:1.35}
+
+/* ADN */
+.adn{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:start}
+.adn .txt p{font-size:19px;line-height:1.6}
+.adn .txt p+p{margin-top:14px}
+.adn .txt strong{font-family:var(--disp);color:var(--m)}
+.why{display:grid;gap:14px}
+.why div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px;display:grid;grid-template-columns:auto 1fr;gap:4px 18px;align-items:start}
+.why .n{grid-row:span 2;font:800 30px/1 var(--disp);color:var(--m);letter-spacing:.02em;padding-top:2px}
+.why h3{font-size:20px;font-weight:700}
+.why p{color:var(--mu);font-size:16.5px}
+
+/* applications */
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.app{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease,border-color .18s}
+.app:hover{transform:translateY(-4px);box-shadow:0 14px 30px -18px rgba(28,23,34,.45);border-color:var(--m)}
+.app .ill{background:var(--tint);padding:14px 14px 8px}
+.app:nth-child(even) .ill{background:#E9E6EE}
+.app .ill svg{display:block;width:100%;height:auto}
+.app .tx{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.app h3{font-size:20px;font-weight:700}
+.app p{font-size:16px;color:#3A3542;line-height:1.45}
+.app small{margin-top:auto;padding-top:10px;font-size:13.5px;color:var(--mu);border-top:1px solid var(--line);line-height:1.4}
+
+/* Bit2Noisy */
+.b2n{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.b2n .wrap{display:grid;grid-template-columns:1fr 1fr;gap:32px 48px;align-items:center}
+.b2nlogo{display:block;width:min(340px,100%);height:auto;margin:0 0 6px -10px}
+.b2n h2{margin-top:6px}
+.b2n p{font-size:18.5px;color:#3A3542;margin-top:14px;max-width:48ch}
+.b2n ul{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.b2n li{border:1.5px solid var(--k);border-radius:999px;padding:5px 14px;font-weight:600;font-size:15px}
+.b2n .cta{margin-top:24px}
+.demos{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.demo{display:grid;grid-template-columns:72px 1fr;gap:20px;align-items:start;background:var(--bg);border:2px solid var(--k);border-radius:20px;padding:22px 24px;text-decoration:none;color:var(--k);transition:transform .18s ease,border-color .18s,background .18s}
+.demo:hover{transform:translateY(-3px);border-color:var(--m);background:var(--tint)}
+.demo svg{width:72px;height:72px;display:block}
+.demo h3{font-size:23px;font-weight:800}
+.b2n .demo p{font-size:16.5px;margin-top:6px;color:#3A3542;max-width:none}
+.demo .go{display:inline-block;margin-top:12px;font-weight:700;color:var(--m)}
+.phones{width:100%;height:auto;display:block}
+.phones .w{animation:pulse 2.4s infinite both}
+.phones .w2{animation-delay:.3s}.phones .w3{animation-delay:.6s}.phones .w4{animation-delay:.9s}.phones .w5{animation-delay:1.2s}
+@keyframes pulse{0%,100%{opacity:.18}35%{opacity:1}}
+
+/* programme */
+.bar{display:flex;gap:4px;height:58px;border-radius:14px;overflow:hidden;margin-bottom:8px}
+.seg{display:flex;align-items:center;padding:0 16px;color:#fff;min-width:0}
+.seg b{font:800 20px var(--disp);white-space:nowrap}
+.b1{--c:var(--m)}.b2{--c:var(--k)}.b3{--c:var(--g)}.b4{--c:#C7A0B5;--on:var(--k)}
+.seg{background:var(--c);color:var(--on,#fff)}
+.barcap{display:flex;justify-content:space-between;color:var(--mu);font-size:14.5px;margin-bottom:26px}
+.prog{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.blk{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--c);border-radius:6px 6px 18px 18px;padding:18px 18px 14px}
+.bh{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:8px;margin-bottom:10px}
+.bh .dot{display:none}
+.bh h3{font-size:19px;font-weight:700}
+.bh b{font:800 19px var(--disp);color:var(--mu)}
+.blk ul{list-style:none;margin:0;padding:0}
+.blk li{display:grid;grid-template-columns:1fr 38px;gap:2px 8px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
+.blk .nm{font-weight:600;font-size:15.5px;line-height:1.3}
+.blk .hh{font-size:14px;color:var(--mu);text-align:right;white-space:nowrap}
+.blk .hb{grid-column:1;grid-row:2;height:6px;border-radius:3px;background:var(--bg)}
+.blk .hb i{display:block;height:100%;border-radius:3px;background:var(--c)}
+.note{color:var(--mu);font-size:14.5px;margin-top:16px}
+
+/* année */
+.year{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative}
+.sq{padding:0 22px 6px;border-left:2px solid var(--line)}
+.sq:first-child{padding-left:0;border-left:0}
+.sqh{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.sqh .n{flex:none;width:52px;height:52px;border-radius:50%;background:var(--m);color:#fff;display:grid;place-items:center;font:800 24px var(--disp)}
+.sq:nth-child(2) .n{background:var(--k)}.sq:nth-child(3) .n{background:var(--g)}
+.sqh h3{font-size:21px;font-weight:700}
+.sqh p{color:var(--mu);font-size:15px}
+.sq ul{list-style:none;margin:0;padding:0}
+.sq li{padding:9px 0;border-top:1px solid var(--line);line-height:1.3}
+.sq li b{display:block;font-weight:600;font-size:16px}
+.sq li span{font-size:13.5px;color:var(--mu)}
+.proj{margin-top:26px;background:var(--m);color:#fff;border-radius:16px;padding:18px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 22px}
+.proj b{font:800 21px var(--disp)}
+.proj span{opacity:.92;flex:1;min-width:240px}
+.proj svg{flex:none;width:44px;height:16px}
+
+/* projets */
+.pj{list-style:none;margin:0;padding:0;columns:2;column-gap:40px}
+.pj li{break-inside:avoid;display:flex;gap:16px;align-items:baseline;padding:13px 0;border-top:1px solid var(--line);font-weight:600;font-size:17.5px;line-height:1.3}
+.pj li span{flex:none;font:700 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--m);letter-spacing:.08em}
+.pjfoot{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center}
+.pjfoot p{color:var(--mu);max-width:56ch}
+
+/* avant / après */
+.ba{display:grid;grid-template-columns:1fr auto 1.5fr;gap:28px;align-items:center}
+.ba h3{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:14px;font-weight:700}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill2{border:2px solid var(--k);border-radius:999px;padding:9px 18px;font-weight:600;background:#fff}
+.pill2.f{background:var(--m);border-color:var(--m);color:#fff}
+.ba .arrow{width:84px;height:40px}
+
+/* débouchés */
+.out{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center}
+.hex{width:344px;max-width:100%;height:auto;display:block}
+.hex text{font:700 14.5px var(--disp);fill:#fff}
+.jobs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.job{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.job b{display:block;font:700 18px/1.2 var(--disp)}
+.job span{font-size:14.5px;color:var(--mu)}
+.life{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.life div{border-left:6px solid var(--m);background:#fff;border-radius:4px 16px 16px 4px;padding:18px 20px}
+.life div:nth-child(2){border-color:var(--k)}.life div:nth-child(3){border-color:var(--g)}
+.life b{display:block;font:700 18.5px/1.2 var(--disp);margin-bottom:6px}
+.life span{color:#3A3542;font-size:16px}
+
+/* fin */
+.end{background:var(--m);color:#fff;text-align:center;padding:64px 0}
+.end h2{color:#fff;margin:0 auto;max-width:20ch}
+.end p{margin:14px auto 0;max-width:52ch;font-size:19px;opacity:.95}
+.end .cta{justify-content:center}
+footer{background:var(--k);color:#CFCAD8;padding:28px 0;font-size:15px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 28px;justify-content:space-between}
+footer a{color:#fff}
+
+@media(max-width:980px){
+  .apps{grid-template-columns:repeat(2,1fr)}
+  .prog{grid-template-columns:repeat(2,1fr)}
+  .adn,.b2n .wrap{grid-template-columns:1fr;gap:32px}
+  .out{grid-template-columns:1fr;gap:28px}
+  nav a:not(.pill){display:none}
+}
+@media(max-width:760px){
+  section{padding:52px 0}
+  .logo .mark{height:30px}.logo span{font-size:12px}
+  .top .wrap{height:56px}
+  .hero .in{padding-top:48px}
+  .hero .arcs{width:400px;height:400px;right:-170px;top:-130px}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .st{padding:20px 0 20px 16px}
+  .st:nth-child(odd){border-left:0;padding-left:0}
+  .st:nth-child(n+3){border-top:1px solid rgba(255,255,255,.16)}
+  .tl{grid-template-columns:1fr;gap:30px}
+  .sq{border-left:0;padding:0}
+  .pj{columns:1}
+  .demos{grid-template-columns:1fr}
+  .demo{grid-template-columns:56px 1fr;gap:16px;padding:18px}
+  .demo svg{width:56px;height:56px}
+  .ba{grid-template-columns:1fr}
+  .ba .arrow{transform:rotate(90deg);width:60px;margin:-4px 0 -4px 10px}
+  .life{grid-template-columns:1fr}
+  .seg{padding:0 8px}.seg b{font-size:15px}
+  #wave{height:110px}
+  .wl{font-size:10.5px;letter-spacing:.06em}
+}
+@media(max-width:520px){
+  .apps,.prog{grid-template-columns:1fr}
+  .app{flex-direction:row}
+  .app .ill{flex:none;width:36%;display:flex;align-items:center;padding:8px}
+  .app .tx{padding:14px 16px}
+  .app small{display:none}
+  nav a.pill{padding:7px 12px;font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .phones .w{animation:none;opacity:1}
+  .app{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="./" aria-label="Mention ICE, accueil"><svg class="mark" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="226 116 444 230" xmlns:c2pa="http://c2pa.org/manifest"><circle cx="253.5" cy="142.5" r="22.5" fill="#86144F"/><path d="M253.5 207V315" stroke="#1C1722" stroke-width="42" stroke-linecap="round"/><path d="M487.1 161.2A92 92 0 1 0 487.1 302.2" fill="none" stroke="#86144F" stroke-width="36" stroke-linecap="round"/><path d="M454.2 198.2A42.5 42.5 0 1 0 454.2 265.2" fill="none" stroke="#706A7F" stroke-width="19" stroke-linecap="round"/><circle cx="428" cy="231.7" r="11" fill="#1C1722"/><path d="M573.3 146H645.7M573.3 317.5H645.7" stroke="#1C1722" stroke-width="38.5" stroke-linecap="round"/><path d="M573.3 232H608.7" stroke="#706A7F" stroke-width="38.5" stroke-linecap="round"/><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo1NTljZTc2OC01YjBkLTQyZWMtOGQ5Mi0wNTVmMTY2YTVhZDkAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaF8Q98+CBwXds8xqkF+cLnMAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDphMzMxNWQ4OC02NjdmLTQzMTItOGJiMi04YzcwZTc3ZDc2ZTVscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoG6CESahCiu8AIHiEcWNZGAAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggTv2/MkhDG1OiA9LPy7mjhG2Olu4wK6+bI2tId/s8NMmkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaNTMycZeNrONmK4tdKNWTx4AAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRMAAAAAAAAAAAAAAAAZGhhc2hYIMHzAZQRZIv3ORGtwtXevMzZNqNKvZEUZ+hA3FwddFQEZG5hbWVuanVtYmYgbWFuaWZlc3RqZXhjbHVzaW9uc4GiZXN0YXJ0GQMKZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjU1OWNlNzY4LTViMGQtNDJlYy04ZDkyLTA1NWYxNjZhNWFkOS9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjNjYWQxZTQ2LWJiNGQtNGUzZS1hMjQxLWQyNjQ0MjE2YjkyZHJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCBO/b8ySEMbU6ID0s/LuaOEbY6W7jArr5sja0h3+zw0yaJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggnD7srvAbJb/fHL/a4Y9634L9q94GAZoRS8j1Gcke37KiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggepivVZhlU834VEZmG8pq5frLFBVM4/8pnRYGNT9v+GB0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQBAfbPV4QOMU8AVi8blUPHVgRQAs/pnUv9VIiB38B8lXnTONzi8LUBMl9pF4xardc5RQxc5p+C8i/WW5F5FJr7E=</c2pa:manifest></metadata></svg><span>Information &amp;<br>Communication Engineering</span></a>
+  <nav aria-label="Sections">
+    <a href="#applications">Applications</a>
+    <a href="#programme">Programme</a>
+    <a href="#annee">L’année</a>
+    <a href="#projets">Projets</a>
+    <a href="#debouches">Débouchés</a>
+    <a class="pill" href="https://mention-ice.github.io/Bit2Noisy/">Bit2Noisy</a>
+  </nav>
+</div></header>
+
+<div class="hero">
+  <svg class="arcs" viewBox="0 0 680 680" aria-hidden="true" fill="none" stroke="#fff" stroke-linecap="round"><path d="M560 150A280 280 0 1 0 560 530" stroke-width="56"/><path d="M470 220A170 170 0 1 0 470 460" stroke-width="34"/><circle cx="340" cy="340" r="34" fill="#fff" stroke="none"/></svg>
+  <div class="wrap in">
+    <p class="kick">Mention de 3<sup>e</sup> année · CentraleSupélec</p>
+    <h1>Information &amp; Communication <em>Engineering</em></h1>
+    <p class="sub">La mention où l’on comprend ce qui fait tourner la 5G, le streaming, l’IA et les réseaux. Notre fil rouge : <b>les mathématiques pour l’information</b>.</p>
+    <div class="cta">
+      <a class="btn w" href="#applications">Voir ce qu’on y fait <span aria-hidden="true">↓</span></a>
+      <a class="btn o" href="https://mention-ice.github.io/Bit2Noisy/">Essayer Bit2Noisy <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="wavebox">
+      <canvas id="wave" role="img" aria-label="Animation : des bits émis, brouillés par le bruit du canal, puis retrouvés à la réception"></canvas>
+      <div class="wl"><span>Bits émis</span><span>Canal bruité</span><span>Bits retrouvés</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="stats"><div class="wrap">
+  <div class="st"><b>251<i>h</i></b><span>de cours scientifiques, en quatre blocs</span></div>
+  <div class="st"><b>200<i>h</i></b><span>de projet, en binôme ou en trinôme</span></div>
+  <div class="st"><b>3</b><span>types de projet : CEI, immersion en entreprise ou en laboratoire, projet interne</span></div>
+  <div class="st"><b>6</b><span>secteurs qui recrutent, des télécoms à la finance</span></div>
+</div></div>
+
+<section id="adn"><div class="wrap adn">
+  <div class="txt">
+    <p class="eyebrow">L’ADN de la mention</p>
+    <h2 style="margin-bottom:22px">Comprendre, modéliser, concevoir</h2>
+    <p>Cette mention repose sur un ADN fort : <strong>les mathématiques pour l’information</strong>. Elle vise à former des ingénieurs capables de comprendre les limites fondamentales des systèmes d’information, de modéliser rigoureusement des architectures complexes, et de concevoir des algorithmes robustes et performants.</p>
+    <p>Au-delà de la simple utilisation d’outils existants, la mention développe une capacité à innover au cœur des systèmes modernes intégrant connectivité et traitement des données.</p>
+  </div>
+  <div class="why">
+    <div><span class="n">01</span><h3>Aller au fond des choses</h3><p>Vous n’apprenez pas seulement à utiliser un outil : vous comprenez pourquoi il marche, et jusqu’où il peut aller.</p></div>
+    <div><span class="n">10</span><h3>Des maths qui servent partout</h3><p>Probabilités, optimisation, information : les mêmes idées s’appliquent à la 5G, à l’IA, aux réseaux et aux marchés.</p></div>
+    <div><span class="n">11</span><h3>Garder toutes les portes ouvertes</h3><p>R&amp;D, data science, finance quantitative, conseil, entrepreneuriat, ou la recherche avec un master en parallèle.</p></div>
+  </div>
+</div></section>
+
+<section id="applications" style="padding-top:0"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">Applications</p>
+    <h2>Des questions concrètes, des réponses rigoureuses</h2>
+    <p class="lead">Huit terrains de jeu où se retrouvent les cours et les projets de la mention.</p>
+  </div>
+  <div class="apps"><article class="app"><div class="ill"><svg viewBox="0 0 240 132" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="#706A7F" stroke-width="3" d="M120 50L104 112M120 50l16 62M110 88h20M107 100h26"/>
+<path stroke="#1C1722" stroke-width="5" d="M96 112h48"/>
+<path stroke="#86144F" stroke-width="5" d="M100.1 27.3A26 26 0 0 0 100.1 60.7M139.9 27.3A26 26 0 0 1 139.9 60.7"/>
+<path stroke="#706A7F" stroke-width="5" d="M84.8 14.4A46 46 0 0 0 84.8 73.6M155.2 14.4A46 46 0 0 1 155.2 73.6"/>
+<circle cx="120" cy="44" r="8" fill="#86144F"/>
+<rect x="28" y="78" width="20" height="34" rx="5" fill="#fff" stroke="#1C1722" stroke-width="3.5"/><circle cx="38" cy="103" r="2.5" fill="#86144F"/>
+<rect x="192" y="78" width="20" height="34" rx="5" fill="#fff" stroke="#1C1722" stroke-width="3.5"/><circle cx="202" cy="103" r="2.5" fill="#86144F"/>
+<rect x="56" y="94" width="26" height="18" rx="4" fill="#fff" stroke="#1C1722" stroke-width="3.5"/>
+<rect x="160" y="94" width="26" height="18" rx="4" fill="#fff" stroke="#1C1722" stroke-width="3.5"/></svg></div><div class="tx"><h3>5G, 6G et au-delà</h3><p>Comment des milliers de téléphones partagent-ils les mêmes fréquences dans un stade, sans se brouiller ?</p><small>Communications sans fil · Réseaux d’accès radio</small></div></article><article class="app"><div class="ill"><svg viewBox="0 0 240 132" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="#706A7F" stroke-width="3" d="M8 110h224"/><path stroke="#706A7F" stroke-width="3" stroke-dasharray="12 12" d="M8 122h224"/>
+<g transform="translate(22 72)"><path d="M4 30h56a4 4 0 0 0 4-4v-6a6 6 0 0 0-5-6l-7-1-8-10a4 4 0 0 0-3-1H21a4 4 0 0 0-3 2l-6 9-6 2a4 4 0 0 0-3 4v7a4 4 0 0 0 1 4z" fill="#1C1722"/><path d="M22 6h8v7H17zM34 6h7l6 7H34z" fill="#fff"/><circle cx="17" cy="30" r="6.5" fill="#fff" stroke="#1C1722" stroke-width="4"/><circle cx="48" cy="30" r="6.5" fill="#fff" stroke="#1C1722" stroke-width="4"/></g><g transform="translate(154 72)"><path d="M4 30h56a4 4 0 0 0 4-4v-6a6 6 0 0 0-5-6l-7-1-8-10a4 4 0 0 0-3-1H21a4 4 0 0 0-3 2l-6 9-6 2a4 4 0 0 0-3 4v7a4 4 0 0 0 1 4z" fill="#86144F"/><path d="M22 6h8v7H17zM34 6h7l6 7H34z" fill="#fff"/><circle cx="17" cy="30" r="6.5" fill="#fff" stroke="#86144F" stroke-width="4"/><circle cx="48" cy="30" r="6.5" fill="#fff" stroke="#86144F" stroke-width="4"/></g>
+<path stroke="#86144F" stroke-width="4.5" d="M130.3 49A14 14 0 0 0 130.3 67M121.1 41.3A26 26 0 0 0 121.1 74.7"/>
+<path stroke="#1C1722" stroke-width="4.5" d="M109.7 49A14 14 0 0 1 109.7 67M118.9 41.3A26 26 0 0 1 118.9 74.7" opacity=".0"/>
+<path stroke="#706A7F" stroke-width="3" d="M214 110V34"/><rect x="204" y="14" width="20" height="24" rx="5" fill="#1C1722"/><circle cx="214" cy="22" r="3.5" fill="#86144F"/><circle cx="214" cy="31" r="3.5" fill="#fff"/>
+<path stroke="#1C1722" stroke-width="4.5" d="M72 62a16 16 0 0 1 16-16M72 50a28 28 0 0 1 28-12" opacity="0"/></svg></div><div class="tx"><h3>Véhicules connectés</h3><p>Des véhicules qui se parlent pour anticiper un freinage ou un piéton masqué : chaque milliseconde compte.</p><small>Réseaux d’accès radio · Files d’attente</small></div></article><article class="app"><div class="ill"><svg viewBox="0 0 240 132" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M60 30L120 20" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M60 30L120 51" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M60 30L120 82" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M60 30L120 113" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M60 66L120 20" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M60 66L120 51" stroke="#86144F" stroke-width="4" opacity="1"/><path d="M60 66L120 82" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M60 66L120 113" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M60 102L120 20" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M60 102L120 51" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M60 102L120 82" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M60 102L120 113" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M120 20L180 46" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M120 20L180 86" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M120 51L180 46" stroke="#86144F" stroke-width="4" opacity="1"/><path d="M120 51L180 86" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M120 82L180 46" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M120 82L180 86" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M120 113L180 46" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><path d="M120 113L180 86" stroke="#706A7F" stroke-width="1.6" opacity="0.55"/><circle cx="60" cy="30" r="9" fill="#fff" stroke="#1C1722" stroke-width="3.5"/><circle cx="60" cy="66" r="9" fill="#86144F" stroke="#86144F" stroke-width="3.5"/><circle cx="60" cy="102" r="9" fill="#fff" stroke="#1C1722" stroke-width="3.5"/><circle cx="120" cy="20" r="9" fill="#fff" stroke="#1C1722" stroke-width="3.5"/><circle cx="120" cy="51" r="9" fill="#86144F" stroke="#86144F" stroke-width="3.5"/><circle cx="120" cy="82" r="9" fill="#fff" stroke="#1C1722" stroke-width="3.5"/><circle cx="120" cy="113" r="9" fill="#fff" stroke="#1C1722" stroke-width="3.5"/><circle cx="180" cy="46" r="9" fill="#86144F" stroke="#86144F" stroke-width="3.5"/><circle cx="180" cy="86" r="9" fill="#fff" stroke="#1C1722" stroke-width="3.5"/><path d="M196 46h22m-8-8l8 8-8 8" stroke="#86144F" stroke-width="4"/><path d="M22 66h18" stroke="#1C1722" stroke-width="4"/></svg></div><div class="tx"><h3>Une IA qui apprend à décider</h3><p>Apprendre par essais et erreurs, puis passer à l’échelle : du jeu à la gestion d’un réseau entier.</p><small>Apprentissage par renforcement · Apprentissage profond · Optimisation</small></div></article><article class="app"><div class="ill"><svg viewBox="0 0 240 132" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="18" y="30" width="15" height="15" rx="3" fill="#86144F" stroke="#86144F" stroke-width="1.5"/><rect x="18" y="48" width="15" height="15" rx="3" fill="#fff" stroke="#1C1722" stroke-width="1.5"/><rect x="18" y="66" width="15" height="15" rx="3" fill="#1C1722" stroke="#1C1722" stroke-width="1.5"/><rect x="18" y="84" width="15" height="15" rx="3" fill="#706A7F" stroke="#706A7F" stroke-width="1.5"/><rect x="36" y="30" width="15" height="15" rx="3" fill="#86144F" stroke="#86144F" stroke-width="1.5"/><rect x="36" y="48" width="15" height="15" rx="3" fill="#fff" stroke="#1C1722" stroke-width="1.5"/><rect x="36" y="66" width="15" height="15" rx="3" fill="#1C1722" stroke="#1C1722" stroke-width="1.5"/><rect x="36" y="84" width="15" height="15" rx="3" fill="#86144F" stroke="#86144F" stroke-width="1.5"/><rect x="54" y="30" width="15" height="15" rx="3" fill="#706A7F" stroke="#706A7F" stroke-width="1.5"/><rect x="54" y="48" width="15" height="15" rx="3" fill="#706A7F" stroke="#706A7F" stroke-width="1.5"/><rect x="54" y="66" width="15" height="15" rx="3" fill="#fff" stroke="#1C1722" stroke-width="1.5"/><rect x="54" y="84" width="15" height="15" rx="3" fill="#fff" stroke="#1C1722" stroke-width="1.5"/><rect x="72" y="30" width="15" height="15" rx="3" fill="#fff" stroke="#1C1722" stroke-width="1.5"/><rect x="72" y="48" width="15" height="15" rx="3" fill="#706A7F" stroke="#706A7F" stroke-width="1.5"/><rect x="72" y="66" width="15" height="15" rx="3" fill="#fff" stroke="#1C1722" stroke-width="1.5"/><rect x="72" y="84" width="15" height="15" rx="3" fill="#1C1722" stroke="#1C1722" stroke-width="1.5"/><path d="M98 66h14m-6-6l6 6-6 6" stroke="#1C1722" stroke-width="3.5"/><rect x="120" y="50" width="22" height="7" rx="3.5" fill="#1C1722"/><rect x="120" y="62.5" width="14" height="7" rx="3.5" fill="#86144F"/><rect x="120" y="75" width="22" height="7" rx="3.5" fill="#706A7F"/><path d="M150 66h14m-6-6l6 6-6 6" stroke="#1C1722" stroke-width="3.5"/><rect x="172" y="36" width="56" height="44" rx="7" fill="#fff" stroke="#1C1722" stroke-width="4"/><path d="M194 48l15 10-15 10z" fill="#86144F" stroke="#86144F" stroke-width="3"/><path d="M200 82v12M186 96h28" stroke="#1C1722" stroke-width="4"/></svg></div><div class="tx"><h3>Vidéo et streaming</h3><p>Pourquoi un film en 4K passe-t-il par une simple connexion ? Parce qu’on sait compresser, et jusqu’où.</p><small>Compression multimédia · Théorie de l’information</small></div></article><article class="app"><div class="ill"><svg viewBox="0 0 240 132" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M34 44L66 26" stroke="#86144F" stroke-width="2.5" opacity=".7"/><path d="M34 44L84 58" stroke="#86144F" stroke-width="2.5" opacity=".7"/><path d="M66 26L84 58" stroke="#86144F" stroke-width="2.5" opacity=".7"/><path d="M34 44L48 84" stroke="#86144F" stroke-width="2.5" opacity=".7"/><path d="M84 58L48 84" stroke="#86144F" stroke-width="2.5" opacity=".7"/><path d="M48 84L92 98" stroke="#86144F" stroke-width="2.5" opacity=".7"/><path d="M84 58L92 98" stroke="#86144F" stroke-width="2.5" opacity=".7"/><path d="M150 34L196 28" stroke="#1C1722" stroke-width="2.5" opacity=".6"/><path d="M150 34L172 66" stroke="#1C1722" stroke-width="2.5" opacity=".6"/><path d="M196 28L172 66" stroke="#1C1722" stroke-width="2.5" opacity=".6"/><path d="M196 28L210 74" stroke="#1C1722" stroke-width="2.5" opacity=".6"/><path d="M172 66L210 74" stroke="#1C1722" stroke-width="2.5" opacity=".6"/><path d="M172 66L152 100" stroke="#1C1722" stroke-width="2.5" opacity=".6"/><path d="M152 100L196 108" stroke="#1C1722" stroke-width="2.5" opacity=".6"/><path d="M210 74L196 108" stroke="#1C1722" stroke-width="2.5" opacity=".6"/><path d="M172 66L196 108" stroke="#1C1722" stroke-width="2.5" opacity=".6"/><path d="M84 58L172 66" stroke="#706A7F" stroke-width="3" stroke-dasharray="5 7"/><circle cx="34" cy="44" r="8" fill="#86144F"/><circle cx="66" cy="26" r="8" fill="#86144F"/><circle cx="84" cy="58" r="11" fill="#86144F"/><circle cx="48" cy="84" r="8" fill="#86144F"/><circle cx="92" cy="98" r="8" fill="#86144F"/><circle cx="150" cy="34" r="8" fill="#1C1722"/><circle cx="196" cy="28" r="8" fill="#1C1722"/><circle cx="172" cy="66" r="11" fill="#1C1722"/><circle cx="210" cy="74" r="8" fill="#1C1722"/><circle cx="152" cy="100" r="8" fill="#1C1722"/><circle cx="196" cy="108" r="8" fill="#1C1722"/></svg></div><div class="tx"><h3>Réseaux sociaux</h3><p>Comment une information ou une épidémie se propage-t-elle, et comment repérer des communautés ?</p><small>Graphes aléatoires · Théorie des jeux</small></div></article><article class="app"><div class="ill"><svg viewBox="0 0 240 132" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="20" y="54" width="26" height="58" rx="3" fill="#1C1722"/><rect x="26" y="62" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="36" y="62" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="26" y="76" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="36" y="76" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="26" y="90" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="36" y="90" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="52" y="26" width="26" height="86" rx="3" fill="#706A7F"/><rect x="58" y="34" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="68" y="34" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="58" y="48" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="68" y="48" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="58" y="62" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="68" y="62" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="58" y="76" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="68" y="76" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="58" y="90" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="68" y="90" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="84" y="68" width="36" height="44" rx="3" fill="#1C1722"/><rect x="90" y="76" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="100" y="76" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="110" y="76" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="90" y="90" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="100" y="90" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><rect x="110" y="90" width="5" height="6" rx="1" fill="#fff" opacity=".85"/><path d="M134 112V72l24 14V72l24 14V72l24 14v26z" fill="#706A7F"/><rect x="208" y="52" width="12" height="60" rx="2" fill="#1C1722"/><path d="M10 112h220" stroke="#1C1722" stroke-width="4"/><circle cx="65" cy="18" r="5" fill="#86144F"/><path d="M55.8 10.3A12 12 0 0 1 74.2 10.3" stroke="#86144F" stroke-width="3.5"/><circle cx="102" cy="60" r="5" fill="#86144F"/><path d="M92.8 52.3A12 12 0 0 1 111.2 52.3" stroke="#86144F" stroke-width="3.5"/><circle cx="214" cy="44" r="5" fill="#86144F"/><path d="M204.8 36.3A12 12 0 0 1 223.2 36.3" stroke="#86144F" stroke-width="3.5"/><path d="M49.7 5.1A20 20 0 0 1 80.3 5.1" stroke="#86144F" stroke-width="3.5" opacity="0"/></svg></div><div class="tx"><h3>Villes et usines connectées</h3><p>Des milliers de capteurs, peu d’énergie, peu de débit : que mesurer, et que transmettre ?</p><small>Acquisition comprimée · Réseaux informatiques · IoT</small></div></article><article class="app"><div class="ill"><svg viewBox="0 0 240 132" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 16v96h208" stroke="#706A7F" stroke-width="2.5"/><path d="M26 98C70 84 96 62 124 60s58-28 96-40" stroke="#706A7F" stroke-width="2.5" stroke-dasharray="3 7"/><path d="M41 62V94" stroke="#86144F" stroke-width="3"/><rect x="34" y="70" width="14" height="16" rx="3" fill="#86144F"/><path d="M67 50V78" stroke="#86144F" stroke-width="3"/><rect x="60" y="58" width="14" height="12" rx="3" fill="#86144F"/><path d="M93 52V80" stroke="#1C1722" stroke-width="3"/><rect x="86" y="58" width="14" height="14" rx="3" fill="#1C1722"/><path d="M119 42V78" stroke="#86144F" stroke-width="3"/><rect x="112" y="50" width="14" height="22" rx="3" fill="#86144F"/><path d="M145 30V58" stroke="#86144F" stroke-width="3"/><rect x="138" y="40" width="14" height="10" rx="3" fill="#86144F"/><path d="M171 34V62" stroke="#1C1722" stroke-width="3"/><rect x="164" y="40" width="14" height="16" rx="3" fill="#1C1722"/><path d="M197 22V62" stroke="#86144F" stroke-width="3"/><rect x="190" y="30" width="14" height="26" rx="3" fill="#86144F"/></svg></div><div class="tx"><h3>Finance quantitative</h3><p>Prédire, compresser, parier : ce sont les mêmes mathématiques. Un projet 3A les applique aux marchés.</p><small>Théorie de l’information · Projet 3A</small></div></article><article class="app"><div class="ill"><svg viewBox="0 0 240 132" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="120" cy="66" r="48" fill="#fff" stroke="#1C1722" stroke-width="3.5"/>
+<ellipse cx="120" cy="66" rx="48" ry="15" stroke="#706A7F" stroke-width="2.5" stroke-dasharray="5 6"/>
+<path d="M120 12v108" stroke="#706A7F" stroke-width="2.5"/>
+<path d="M120 66L152 36" stroke="#86144F" stroke-width="5"/><circle cx="152" cy="36" r="8" fill="#86144F"/><circle cx="120" cy="66" r="4.5" fill="#1C1722"/>
+<text x="131" y="17" font-family="Bricolage Grotesque,sans-serif" font-weight="700" font-size="15" fill="#1C1722" stroke="none">|0⟩</text>
+<text x="131" y="126" font-family="Bricolage Grotesque,sans-serif" font-weight="700" font-size="15" fill="#1C1722" stroke="none">|1⟩</text></svg></div><div class="tx"><h3>Information quantique</h3><p>Quand le bit devient qubit : de nouvelles limites à comprendre et de nouveaux protocoles à inventer.</p><small>Projets 3A</small></div></article></div>
+</div></section>
+
+<section id="bit2noisy" class="b2n"><div class="wrap">
+  <div>
+    <p class="eyebrow">Ce qu’on fait, c’est fun</p>
+    <svg class="b2nlogo" role="img" aria-label="Bit2Noisy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 655 220" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo4NzNmMDljMy01M2I5LTRkZGItYmI0MC0wZTU5ZDU3MTgxMDgAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaP6R6WkkdbMLYVMg6yMvb74AAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDpiYjk5MDg1Ny02ZTI3LTQ2MjktOGI5Yi1iNjY2Mjk4NDZhYzlscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoQ69O4DdowSRdQrr36ftSXgAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggfVE/j0WrClT47i51ys8aJHag7qFMbg16BrkxVLoRAACkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaG8wmmQGqfAvgL5awfwdz9gAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCBwlEEtACtfI5l81yi+iVhqDWZcklwix8fQ1SainnkCpGRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBiWZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjg3M2YwOWMzLTUzYjktNGRkYi1iYjQwLTBlNTlkNTcxODEwOC9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjg1MWE0OWQzLTA4NTAtNGNkNS1iNWY1LTRmZTZkMDViMTVkOXJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCB9UT+PRasKVPjuLnXKzxokdqDuoUxuDXoGuTFUuhEAAKJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggR0WNMRZBIQOLQl963VTytxTX377ae114dHjkEMAoJm2iY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggnF/2ug3ASbe+wkoULi0HEnflpocslzOqEd8fgTUpyTR0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQFtuxLIkAA7gpNfQ5hCzLcjjz74Kg6zdVWi5zQpMiRwHau1ZsoeuXliP6Pkgw91PANzhZ1kTdwfLUK5Z65A3HyA=</c2pa:manifest></metadata><title>Bit2Noisy</title><rect x="24.9" y="45.6" width="15.7" height="15.7" fill="#1C1722"/><rect x="42.3" y="45.6" width="15.7" height="15.7" fill="#1C1722"/><rect x="59.8" y="45.6" width="15.7" height="15.7" fill="#1C1722"/><rect x="77.3" y="45.6" width="15.7" height="15.7" fill="#1C1722"/><rect x="24.9" y="63.0" width="15.7" height="15.7" fill="#1C1722"/><rect x="77.3" y="63.0" width="15.7" height="15.7" fill="#1C1722"/><rect x="94.7" y="63.0" width="15.7" height="15.7" fill="#1C1722"/><rect x="24.9" y="80.5" width="15.7" height="15.7" fill="#1C1722"/><rect x="42.3" y="80.5" width="15.7" height="15.7" fill="#1C1722"/><rect x="59.8" y="80.5" width="15.7" height="15.7" fill="#1C1722"/><rect x="77.3" y="80.5" width="15.7" height="15.7" fill="#1C1722"/><rect x="24.9" y="98.0" width="15.7" height="15.7" fill="#1C1722"/><rect x="77.3" y="98.0" width="15.7" height="15.7" fill="#1C1722"/><rect x="94.7" y="98.0" width="15.7" height="15.7" fill="#1C1722"/><rect x="24.9" y="115.4" width="15.7" height="15.7" fill="#1C1722"/><rect x="42.3" y="115.4" width="15.7" height="15.7" fill="#1C1722"/><rect x="59.8" y="115.4" width="15.7" height="15.7" fill="#1C1722"/><rect x="77.3" y="115.4" width="15.7" height="15.7" fill="#1C1722"/><rect x="122.7" y="45.6" width="15.7" height="15.7" fill="#1C1722"/><rect x="122.7" y="80.5" width="15.7" height="15.7" fill="#1C1722"/><rect x="122.7" y="98.0" width="15.7" height="15.7" fill="#1C1722"/><rect x="122.7" y="115.4" width="15.7" height="15.7" fill="#1C1722"/><rect x="168.1" y="45.6" width="15.7" height="15.7" fill="#1C1722"/><rect x="150.6" y="63.0" width="15.7" height="15.7" fill="#1C1722"/><rect x="168.1" y="63.0" width="15.7" height="15.7" fill="#1C1722"/><rect x="185.5" y="63.0" width="15.7" height="15.7" fill="#1C1722"/><rect x="168.1" y="80.5" width="15.7" height="15.7" fill="#1C1722"/><rect x="168.1" y="98.0" width="15.7" height="15.7" fill="#1C1722"/><rect x="168.1" y="115.4" width="15.7" height="15.7" fill="#1C1722"/><rect x="185.5" y="115.4" width="15.7" height="15.7" fill="#1C1722"/><path d="M221.08203125 132.0H285.41796875V115.30078125H249.79296875V114.71484375L260.6328125 104.63671875C279.5 88.171875 284.3046875 79.79296875 284.3046875 69.83203125C284.3046875 54.1875 271.58984375 43.5234375 251.90234375 43.5234375C232.7421875 43.5234375 219.91015625 54.65625 219.91015625 72.29296875H239.59765625C239.59765625 64.3828125 244.4609375 59.75390625 251.84375 59.75390625C259.05078125 59.75390625 264.265625 64.1484375 264.265625 71.4140625C264.265625 78.03515625 260.046875 82.546875 252.83984375 89.109375L221.08203125 117.17578125Z" fill="#86144F"/><path d="M296.6984375 132.0H317.909375V95.84765625C317.909375 90.33984375 317.3234375 80.84765625 316.6203125 70.4765625C321.48359375 80.90625 324.70625 87.46875 329.8625 95.84765625L352.18671875 132.0H374.9796875V44.6953125H353.76875V81.84375C353.76875 87.9375 354.41328125 97.95703125 354.99921875 106.6875C351.3078125 97.1953125 347.675 90.57421875 343.8078125 84.12890625L319.4328125 44.6953125H296.6984375Z" fill="#1C1722"/><path d="M417.725 133.23046875C438.17421875 133.23046875 450.59609375 119.63671875 450.59609375 99.48046875C450.59609375 79.265625 438.17421875 65.671875 417.725 65.671875C397.2171875 65.671875 384.7953125 79.265625 384.7953125 99.48046875C384.7953125 119.63671875 397.2171875 133.23046875 417.725 133.23046875ZM417.725 117.5859375C409.8734375 117.5859375 405.6546875 110.26171875 405.6546875 99.36328125C405.6546875 88.40625 409.8734375 81.31640625 417.725 81.31640625C425.5765625 81.31640625 429.7953125 88.40625 429.7953125 99.36328125C429.7953125 110.26171875 425.5765625 117.5859375 417.725 117.5859375Z" fill="#1C1722"/><path d="M461.61171875 132.0H482.0609375V66.4921875H461.61171875ZM471.80703125 58.81640625C477.66640625 58.81640625 482.4125 54.421875 482.4125 48.97265625C482.4125 43.5234375 477.66640625 39.12890625 471.80703125 39.12890625C466.00625 39.12890625 461.26015625 43.5234375 461.26015625 48.97265625C461.26015625 54.421875 466.00625 58.81640625 471.80703125 58.81640625Z" fill="#1C1722"/><path d="M523.19375 133.23046875C541.06484375 133.23046875 553.896875 124.55859375 553.896875 111.08203125C553.896875 101.58984375 547.62734375 95.84765625 534.61953125 93.38671875L522.08046875 91.04296875C516.45546875 89.9296875 514.69765625 87.87890625 514.69765625 85.2421875C514.69765625 81.90234375 518.56484375 79.734375 523.48671875 79.734375C528.99453125 79.734375 532.74453125 82.3125 533.975 86.70703125L552.021875 83.8359375C549.73671875 72.5859375 539.54140625 65.671875 523.13515625 65.671875C505.55703125 65.671875 494.30703125 73.40625 494.30703125 86.47265625C494.30703125 96.4921875 500.75234375 102.87890625 513.7015625 105.33984375L525.12734375 107.56640625C530.5765625 108.6796875 533.1546875 110.37890625 533.1546875 113.42578125C533.1546875 116.765625 529.69765625 118.875 523.95546875 118.875C516.9828125 118.875 513.29140625 115.9453125 511.65078125 110.26171875L492.66640625 113.25C494.9515625 125.7890625 506.4359375 133.23046875 523.19375 133.23046875Z" fill="#1C1722"/><path d="M563.009375 154.96875C566.05625 156.140625 570.978125 156.9609375 576.0171875 156.9609375C590.72421875 156.9609375 597.87265625 149.51953125 601.85703125 138.9140625L629.3375 66.4921875H608.009375L597.52109375 98.54296875C595.76328125 104.109375 594.2984375 109.67578125 592.95078125 115.59375C591.8375 109.67578125 590.7828125 104.16796875 589.08359375 98.54296875L579.2984375 66.4921875H557.7359375L582.16953125 132.1171875L582.228125 134.87109375C582.52109375 140.203125 577.540625 142.72265625 570.1578125 140.73046875L567.5796875 140.02734375Z" fill="#1C1722"/><path d="M28.0,173.0 L62.2,173.0 L62.2,199.0 L96.4,199.0 L96.4,173.0 L130.6,173.0 L130.6,173.0 L164.8,173.0 L164.8,199.0 L199.0,199.0 L199.0,173.0 L233.2,173.0 L233.2,199.0 L267.5,199.0 L267.5,185.2 L272.5,185.9 L277.5,189.2 L282.5,189.7 L287.5,190.1 L292.5,188.7 L297.5,181.9 L302.5,183.5 L307.5,189.3 L312.5,186.4 L317.5,183.4 L322.5,184.5 L327.5,188.6 L332.5,189.1 L337.5,183.8 L342.5,188.2 L347.5,192.1 L352.5,194.1 L357.5,195.6 L362.5,195.8 L367.5,193.5 L372.5,191.5 L377.5,189.7 L382.5,184.4 L387.5,186.1 L392.5,196.4 L397.5,196.7 L402.5,188.3 L407.5,185.7 L412.5,191.7 L417.5,194.2 L422.5,192.1 L427.5,193.5 L432.5,184.9 L437.5,184.9 L442.5,189.7 L447.5,182.2 L452.5,184.7 L457.5,189.1 L462.5,186.0 L467.5,185.2 L472.5,191.4 L477.5,191.4 L482.5,179.2 L487.5,186.9 L492.5,189.3 L497.5,181.4 L502.5,188.5 L507.5,179.6 L512.5,173.0 L517.5,188.1 L522.5,191.3 L527.5,182.9 L532.5,184.2 L537.5,183.7 L542.5,183.1 L547.5,183.2 L552.5,176.0 L557.5,182.4 L562.5,188.2 L567.5,187.2 L572.5,187.6 L577.5,191.0 L582.5,194.4 L587.5,189.7 L592.5,182.7 L597.5,176.3 L602.5,186.8 L607.5,196.0 L612.5,186.7 L617.5,192.4 L622.5,197.6" fill="none" stroke="#86144F" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <h2>Envoyez un message à travers l’air</h2>
+    <p>Ici, les bits deviennent du son : le message sort par le haut-parleur d’un appareil et arrive par le micro des autres. Sans réseau et sans rien installer, tout se passe dans le navigateur.</p>
+  </div>
+  <svg class="phones" viewBox="0 0 520 320" aria-hidden="true" fill="none" stroke-linecap="round">
+    <rect x="30" y="50" width="120" height="220" rx="22" fill="#fff" stroke="#1C1722" stroke-width="6"/>
+    <rect x="50" y="86" width="64" height="26" rx="13" fill="#86144F"/><rect x="50" y="122" width="44" height="26" rx="13" fill="#86144F"/>
+    <path d="M78 250h24" stroke="#1C1722" stroke-width="6"/>
+    <rect x="370" y="50" width="120" height="220" rx="22" fill="#fff" stroke="#1C1722" stroke-width="6"/>
+    <rect x="406" y="86" width="64" height="26" rx="13" fill="#706A7F"/><rect x="426" y="122" width="44" height="26" rx="13" fill="#706A7F"/>
+    <path d="M418 250h24" stroke="#1C1722" stroke-width="6"/>
+    <g stroke="#86144F" stroke-width="9">
+      <path class="w w1" d="M172.6 141.6A24 24 0 0 1 172.6 178.4"/>
+      <path class="w w2" d="M190.2 123.2A48 48 0 0 1 190.2 196.8"/>
+      <path class="w w3" d="M207.8 104.8A72 72 0 0 1 207.8 215.2"/>
+    </g>
+    <g fill="#706A7F">
+      <circle class="w w3" cx="238" cy="120" r="5"/><circle class="w w3" cx="246" cy="168" r="7"/><circle class="w w3" cx="236" cy="204" r="4"/>
+      <circle class="w w4" cx="262" cy="98" r="4"/><circle class="w w4" cx="270" cy="142" r="6"/><circle class="w w4" cx="264" cy="188" r="5"/><circle class="w w4" cx="274" cy="222" r="4"/>
+      <circle class="w w4" cx="292" cy="116" r="6"/><circle class="w w5" cx="298" cy="162" r="4"/><circle class="w w5" cx="290" cy="204" r="6"/>
+      <circle class="w w5" cx="318" cy="134" r="5"/><circle class="w w5" cx="324" cy="182" r="6"/><circle class="w w5" cx="316" cy="226" r="4"/><circle class="w w5" cx="340" cy="158" r="5"/>
+    </g>
+  </svg>
+  <div class="demos">
+    <a class="demo" href="https://mention-ice.github.io/Bit2Noisy/">
+      <svg viewBox="0 0 72 72" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M8 28h10l14-11v38L18 44H8z" fill="#86144F" stroke="#86144F" stroke-width="4"/><path d="M41.5 27.5a12 12 0 0 1 0 17" stroke="#86144F" stroke-width="5"/><path d="M49 20a22 22 0 0 1 0 32" stroke="#706A7F" stroke-width="5"/><rect x="58" y="10" width="9" height="15" rx="2.5" stroke="#1C1722" stroke-width="3"/><rect x="60" y="29" width="9" height="15" rx="2.5" stroke="#1C1722" stroke-width="3"/><rect x="58" y="48" width="9" height="15" rx="2.5" stroke="#1C1722" stroke-width="3"/></svg>
+      <div><h3>Bit2Noisy</h3><p>Un appareil diffuse un texte ou une image, et tous les téléphones de la salle le décodent en même temps.</p><span class="go">Ouvrir la démo <span aria-hidden="true">→</span></span></div>
+    </a>
+    <a class="demo" href="https://mention-ice.github.io/Bit2Noisy/chat/">
+      <svg viewBox="0 0 72 72" aria-hidden="true" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h36a6 6 0 0 1 6 6v16a6 6 0 0 1-6 6H24l-10 9v-9H8a0 0 0 0 1 0 0z" fill="#86144F" stroke="#86144F" stroke-width="4"/><path d="M58 30h2a6 6 0 0 1 6 6v14a6 6 0 0 1-6 6h-2v8l-9-8H34a6 6 0 0 1-6-6" stroke="#1C1722" stroke-width="4"/><path d="M17 26h4M27 26h4M37 26h4" stroke="#fff" stroke-width="4.5"/></svg>
+      <div><h3>Bit2Noisy Chat</h3><p>Un chat de groupe entre les téléphones d’une même salle : textes, emojis, images et messages vocaux, tout voyage par le son.</p><span class="go">Ouvrir le chat <span aria-hidden="true">→</span></span></div>
+    </a>
+  </div>
+</div></section>
+
+<section id="programme"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">Programme d’enseignement</p>
+    <h2>Quatre blocs, un même langage</h2>
+    <p class="lead">Des communications à l’apprentissage, les cours se répondent : ce qui limite un canal éclaire aussi ce qu’un algorithme peut apprendre.</p>
+  </div>
+  <div class="bar" role="img" aria-label="Répartition des heures de cours par bloc"><div class="seg b1" style="flex:72"><b>72 h</b></div><div class="seg b2" style="flex:94"><b>94 h</b></div><div class="seg b3" style="flex:48"><b>48 h</b></div><div class="seg b4" style="flex:37"><b>37 h</b></div></div>
+  <div class="barcap"><span>Heures de cours en présentiel, par bloc</span><span>251 h au total</span></div>
+  <div class="prog"><div class="blk b1"><div class="bh"><span class="dot"></span><h3>Information &amp; Communication</h3><b>72 h</b></div><ul><li><span class="nm">Communications numériques</span><span class="hb"><i style="width:100%"></i></span><span class="hh">24 h</span></li><li><span class="nm">Codage correcteur d’erreur</span><span class="hb"><i style="width:75%"></i></span><span class="hh">18 h</span></li><li><span class="nm">Théorie de l’information et codage</span><span class="hb"><i style="width:62%"></i></span><span class="hh">15 h</span></li><li><span class="nm">Communications sans fil</span><span class="hb"><i style="width:62%"></i></span><span class="hh">15 h</span></li></ul></div><div class="blk b2"><div class="bh"><span class="dot"></span><h3>Learning &amp; Optimization</h3><b>94 h</b></div><ul><li><span class="nm">Apprentissage par renforcement</span><span class="hb"><i style="width:88%"></i></span><span class="hh">21 h</span></li><li><span class="nm">Apprentissage profond</span><span class="hb"><i style="width:88%"></i></span><span class="hh">21 h</span></li><li><span class="nm">Graphes aléatoires</span><span class="hb"><i style="width:88%"></i></span><span class="hh">21 h</span></li><li><span class="nm">Optimisation à grande échelle</span><span class="hb"><i style="width:79%"></i></span><span class="hh">19 h</span></li><li><span class="nm">Théorie des jeux</span><span class="hb"><i style="width:50%"></i></span><span class="hh">12 h</span></li></ul></div><div class="blk b3"><div class="bh"><span class="dot"></span><h3>Networks</h3><b>48 h</b></div><ul><li><span class="nm">Réseaux d’accès radio</span><span class="hb"><i style="width:75%"></i></span><span class="hh">18 h</span></li><li><span class="nm">Réseaux informatiques</span><span class="hb"><i style="width:62%"></i></span><span class="hh">15 h</span></li><li><span class="nm">Files d’attente</span><span class="hb"><i style="width:62%"></i></span><span class="hh">15 h</span></li></ul></div><div class="blk b4"><div class="bh"><span class="dot"></span><h3>Signal</h3><b>37 h</b></div><ul><li><span class="nm">Acquisition comprimée</span><span class="hb"><i style="width:54%"></i></span><span class="hh">13 h</span></li><li><span class="nm">Traitement du signal</span><span class="hb"><i style="width:50%"></i></span><span class="hh">12 h</span></li><li><span class="nm">Compression multimédia</span><span class="hb"><i style="width:50%"></i></span><span class="hh">12 h</span></li></ul></div></div>
+  <p class="note">Heures en présentiel d’après les fiches de cours 2025-2026 du catalogue CentraleSupélec. S’y ajoutent les cours d’ouverture et le projet.</p>
+</div></section>
+
+<section id="annee" class="year"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">L’année en trois séquences</p>
+    <h2>Du socle commun à la spécialisation</h2>
+  </div>
+  <div class="tl"><div class="sq"><div class="sqh"><span class="n">9</span><div><h3>Séquence 9</h3><p>Le socle de la dominante</p></div></div><ul><li><b>Communications numériques</b><span>J. Antoine, H. Jridi</span></li><li><b>Traitement du signal pour les communications, l’image et l’audio</b><span>J. Picheral, H. Jridi</span></li><li><b>Défis et enjeux des technologies de l’information</b><span>R. de Lacerda, C. Soladié</span></li><li><b>Architecture radio</b><span>M. Serhir</span></li><li><b>Systèmes embarqués</b><span>A. Kolar, A. Nafkha</span></li><li><b>Conception d’une application IoT</b><span>P. Bénabès, A. Nafkha</span></li><li><b>Parcimonie, structure et acquisition comprimée</b><span>M. Ferreira Da Costa</span></li></ul></div><div class="sq"><div class="sqh"><span class="n">10</span><div><h3>Séquence 10</h3><p>Information et réseaux</p></div></div><ul><li><b>Théorie de l’information et codage</b><span>L. Husson</span></li><li><b>Principes fondamentaux des communications sans fil</b><span>S. Yang</span></li><li><b>Codage correcteur d’erreur</b><span>A. Berthet</span></li><li><b>Compression de données multimédias</b><span>S. Yang, F. Dufaux</span></li><li><b>Réseaux d’accès radio</b><span>M. Assaad</span></li><li><b>Théorie des files d’attente et ses applications</b><span>S.-E. El Ayoubi, S. Hoteit</span></li></ul></div><div class="sq"><div class="sqh"><span class="n">11</span><div><h3>Séquence 11</h3><p>Apprentissage et décision</p></div></div><ul><li><b>Apprentissage par renforcement</b><span>R. Combes</span></li><li><b>Apprentissage profond</b><span>J.-P. Piantanida</span></li><li><b>Optimisation à grande échelle</b><span>G. Paschos, A. Aravanis</span></li><li><b>Théorie et applications des graphes aléatoires</b><span>R. Combes</span></li><li><b>Théorie des jeux</b><span>M. Touati</span></li><li><b>Réseaux informatiques</b><span>S. Hoteit</span></li><li><b>Systèmes intelligents</b><span>A. Wautier</span></li><li><b>Séminaire : économie et régulation des télécoms</b><span>R. de Lacerda</span></li></ul></div></div>
+  <div class="proj">
+    <b>Projet</b>
+    <span>Tout au long des trois séquences : 200 h sur un sujet proposé par une entreprise, un laboratoire ou un enseignant-chercheur.</span>
+    <svg viewBox="0 0 44 16" aria-hidden="true" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8h38m-7-6l7 6-7 6"/></svg>
+  </div>
+</div></section>
+
+<section id="projets"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">Projets de 3A</p>
+    <h2>Les sujets de cette année</h2>
+    <p class="lead">Un aperçu des sujets 2026-2027, de la théorie pure aux applications très concrètes.</p>
+  </div>
+  <ol class="pj"><li><span>0001</span>Apprentissage distribué et algorithmes de synchronisation</li><li><span>0010</span>IA guidée par la physique : spectroscopie laser (LIBS)</li><li><span>0011</span>Théorie de l’information et finance</li><li><span>0100</span>Large Language Models pour les télécoms</li><li><span>0101</span>Machine learning distribué sur réseaux sans fil</li><li><span>0110</span>Optimisation bayésienne multiobjectif</li><li><span>0111</span>Investissement 6G sous contraintes carbone</li><li><span>1000</span>Communications sémantiques quantiques</li><li><span>1001</span>Limites fondamentales de l’estimation avec assistance</li><li><span>1010</span>Beamforming acoustique pour surveiller la biodiversité</li><li><span>1011</span>Tomographie super-résolue d’états quantiques de la lumière</li></ol>
+  <div class="pjfoot">
+    <a class="btn mg" href="projets/">Voir les sujets en détail <span aria-hidden="true">→</span></a>
+    <p>Chaque projet se fait en binôme ou en trinôme, avec un encadrant et des créneaux dédiés chaque semaine.</p>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">Pour qui, pour quoi</p>
+    <h2>Ce qu’il faut en arrivant, ce qu’on sait faire en sortant</h2>
+  </div>
+  <div class="ba">
+    <div><h3>Prérequis</h3><div class="pills"><span class="pill2">Probabilités et statistiques</span><span class="pill2">Signal et systèmes</span><span class="pill2">Algorithmes et programmation</span></div></div>
+    <svg class="arrow" viewBox="0 0 84 40" aria-hidden="true" fill="none" stroke="#86144F" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20h70M58 6l18 14-18 14"/></svg>
+    <div><h3>Compétences techniques acquises</h3><div class="pills"><span class="pill2 f">Techniques avancées de traitement des données</span><span class="pill2 f">Architecture des réseaux 5G</span><span class="pill2 f">Intelligence artificielle appliquée aux réseaux</span><span class="pill2 f">IoT analytiques</span><span class="pill2 f">Systèmes de calcul et de stockage distribués</span></div></div>
+  </div>
+</div></section>
+
+<section id="debouches" class="year"><div class="wrap">
+  <div class="head">
+    <p class="eyebrow">Et après ?</p>
+    <h2>Secteurs d’emploi et débouchés</h2>
+  </div>
+  <div class="out">
+    <svg class="hex" viewBox="0 0 344 199" role="img" aria-label="Secteurs : télécom, finance, énergie, aérospatial, transports, numérique"><polygon points="52,6 97.0,32.0 97.0,84.0 52,110 7.0,84.0 7.0,32.0" fill="#86144F"/><text x="52" y="63" text-anchor="middle">Télécom</text><polygon points="148,6 193.0,32.0 193.0,84.0 148,110 103.0,84.0 103.0,32.0" fill="#1C1722"/><text x="148" y="63" text-anchor="middle">Finance</text><polygon points="244,6 289.0,32.0 289.0,84.0 244,110 199.0,84.0 199.0,32.0" fill="#706A7F"/><text x="244" y="63" text-anchor="middle">Énergie</text><polygon points="100,89 145.0,115.0 145.0,167.0 100,193 55.0,167.0 55.0,115.0" fill="#706A7F"/><text x="100" y="146" text-anchor="middle">Aérospatial</text><polygon points="196,89 241.0,115.0 241.0,167.0 196,193 151.0,167.0 151.0,115.0" fill="#86144F"/><text x="196" y="146" text-anchor="middle">Transports</text><polygon points="292,89 337.0,115.0 337.0,167.0 292,193 247.0,167.0 247.0,115.0" fill="#1C1722"/><text x="292" y="146" text-anchor="middle">Numérique</text></svg>
+    <div class="jobs">
+      <div class="job"><b>R&amp;D</b><span>Télécoms et réseaux</span></div>
+      <div class="job"><b>Data science, IA</b><span>Modélisation, apprentissage</span></div>
+      <div class="job"><b>Finance quantitative</b><span>Modèles et algorithmes</span></div>
+      <div class="job"><b>Conseil</b><span>Technologie et stratégie</span></div>
+      <div class="job"><b>Entrepreneuriat</b><span>Créer à partir d’une idée technique</span></div>
+      <div class="job"><b>Recherche</b><span>Thèse après un master</span></div>
+    </div>
+  </div>
+  <div class="life">
+    <div><b>Au contact des industriels</b><span>Interventions et visites de partenaires industriels pendant l’année.</span></div>
+    <div><b>Un projet en parallèle</b><span>Projet ou convention d’études industrielles (CEI), mené tout au long de l’année.</span></div>
+    <div><b>Compatible avec un master</b><span>Par exemple le master SAR, pour s’orienter vers un parcours recherche (PhD).</span></div>
+  </div>
+</div></section>
+
+<div class="end"><div class="wrap">
+  <h2>Envie d’essayer avant de choisir ?</h2>
+  <p>Ouvrez Bit2Noisy Chat avec vos voisins de table, ou parcourez les sujets de projet de cette année.</p>
+  <div class="cta">
+    <a class="btn w" href="https://mention-ice.github.io/Bit2Noisy/chat/">Ouvrir Bit2Noisy Chat <span aria-hidden="true">→</span></a>
+    <a class="btn o" href="https://mention-ice.github.io/Bit2Noisy/">Bit2Noisy <span aria-hidden="true">→</span></a>
+    <a class="btn o" href="projets/">Projets 3A <span aria-hidden="true">→</span></a>
+  </div>
+</div></div>
+
+<footer><div class="wrap">
+  <span>Mention ICE · CentraleSupélec · Responsable : Sheng Yang</span>
+  <span><a href="https://www.centralesupelec.fr/catalogue-de-formations/dominante-systeme-communiquant-et-objets-connectes">Catalogue de la dominante</a> · <a href="projets/">Projets 3A</a> · <a href="https://mention-ice.github.io/Bit2Noisy/">Bit2Noisy</a> · <a href="https://mention-ice.github.io/Bit2Noisy/chat/">Bit2Noisy Chat</a></span>
+</div></footer>
+
+<script>
+(function(){
+  var c=document.getElementById('wave'); if(!c||!c.getContext) return;
+  var ctx=c.getContext('2d'), W=0, H=0, dpr=1;
+  var bits=[1,0,1,1,0,1,0,0,1,1,1,0,1,0,0,1,0,1,1,0,0,1,1,1,0,1,0], N=bits.length;
+  function hash(n){var s=Math.sin(n*127.1)*43758.5453; return s-Math.floor(s);}
+  function noise(x){var i=Math.floor(x), f=x-i, u=f*f*(3-2*f); return (hash(i)+(hash(i+1)-hash(i))*u)*2-1;}
+  function sm(a,b,t){t=Math.min(1,Math.max(0,(t-a)/(b-a))); return t*t*(3-2*t);}
+  function env(t){return sm(.27,.41,t)*(1-sm(.59,.73,t));}
+  function bit(k){return bits[((k%N)+N)%N];}
+  function size(){dpr=Math.min(window.devicePixelRatio||1,2); W=c.clientWidth; H=c.clientHeight; c.width=Math.round(W*dpr); c.height=Math.round(H*dpr);}
+  function draw(t){
+    ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,W,H);
+    var bw=Math.max(30,W/24), amp=H*.2, mid=H*.42, off=t*.035, r=.07, x;
+    ctx.beginPath();
+    for(x=-2;x<=W+2;x+=1.5){
+      var p=(x-off)/bw, k=Math.floor(p), f=p-k, v=bit(k)?1:-1;
+      if(f>1-r){var v2=bit(k+1)?1:-1; v+=(v2-v)*((f-(1-r))/r);}
+      var e=env(x/W);
+      var n=noise((x-off)*.33)*.95+noise(x*.12+t*.004)*.7;
+      var y=mid-(v*(1-.5*e)+n*e*1.05)*amp;
+      if(x<=-2) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle='#fff'; ctx.lineWidth=2.6; ctx.lineJoin='round'; ctx.lineCap='round'; ctx.stroke();
+    ctx.font='700 '+(W<600?12:14)+'px "Bricolage Grotesque",system-ui,sans-serif'; ctx.textAlign='center'; ctx.textBaseline='alphabetic';
+    var k0=Math.floor((-off)/bw)-1, k1=Math.ceil((W-off)/bw)+1, kk;
+    for(kk=k0;kk<=k1;kk++){
+      var cx=(kk+.5)*bw+off; if(cx<-bw||cx>W+bw) continue;
+      var a=1-env(cx/W);
+      ctx.fillStyle='rgba(255,255,255,'+(.9*a*a).toFixed(3)+')';
+      ctx.fillText(bit(kk)?'1':'0',cx,H-10);
+      if(a<.5){ctx.fillStyle='rgba(255,255,255,'+(.55*(1-a)).toFixed(3)+')'; ctx.fillText('?',cx,H-10);}
+    }
+  }
+  var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function frame(t){draw(t); if(!still) requestAnimationFrame(frame);}
+  size(); window.addEventListener('resize',function(){size(); if(still) draw(0);});
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){if(still) draw(0);});
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
